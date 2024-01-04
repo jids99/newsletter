@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <!-- - Tomato: hsl(4, 100%, 67%)
+  - Dark Slate Grey: hsl(234, 29%, 20%)
+  - Charcoal Grey: hsl(235, 18%, 26%)
+  - Grey: hsl(231, 7%, 60%)
+  - White: hsl(0, 0%, 100%)
+  - Font size (paragraph): 16px
+  - Family: [Roboto](https://fonts.google.com/specimen/Roboto)
+  - Weights: 400, 700 -->
+  
+
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    
+    @font-face {
+      font-family: Roboto-Bold;
+      src: url(assets/fonts/Roboto-Bold.ttf);
+    }
+    @font-face {
+      font-family: Roboto-Regular;
+      src: url(assets/fonts/Roboto-Regular.ttf);
+    }
+
+    body {
+      background:hsl(235, 18%, 26%);
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      display: grid;
+      height: 100vh;
+    }
+    .card {
+      padding: 24px;
+      text-align: left;
+      width: fit-content;
+      font-family: 'Roboto-Regular', sans-serif;
+      border-radius: 20px;
+      background-color: hsl(0, 0%, 100%);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media only screen and (max-width: 900px) {
+      .card {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .card-img-right {
+      border-radius: 12px;
+    }
+    .headline{
+      color: hsl(235, 18%, 26%);
+      font-family: 'Roboto-Bold', sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+    }
+    .content{
+      font-size: 16px;
+      color: hsl(234, 29%, 20%);
+      font-weight: 400;
+    }
+    .custom-button {
+      padding: 16px;
+      background-color: hsl(235, 18%, 26%);
+      border-radius: 3px;
+      font-family: 'Roboto-Bold', sans-serif;
+      color: hsl(0, 0%, 100%);
+    }
+    .one {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 450px;
+      order: 0;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .massageContainer{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+    .massageContainer > div {
+      width: fit-content;
+    }
+    .custom-check {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      position: relative;
+      background-color: hsl(4, 100%, 67%); /* Tomato background color */
+    }
+    /* Checkmark using ::before pseudo-element */
+    .custom-check::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg); /* Reversed checkmark */
+      width: 16px;
+      height: 2px;
+      background-color: white; /* White checkmark */
+    }
+
+    .bigger {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 16px;
+    }
+
+    .checkContainer {
+      display: flex;
+      gap: 12px;
+      margin: 6px;
+    }
+    .subhead {
+      margin-bottom: 16px;
+    }
+ 
+  </style>
+</head>
+<body>
+
+  <form method="POST" action="#">
+  <div class="card hidden" id="form-card"> 
+    <div class="one">
+        <p class="headline">
+        Stay updated!
+        </p>
+      <div class="subhead content">
+        Join 60,000+ product managers receiving monthly updates on:
+      </div>
+      <div class="checkContainer content">
+        <div class="custom-check"></div> 
+          <div class="check-text">Product discovery and building what matters </div> 
+        </div>
+        <div class="checkContainer content">
+          <div class="custom-check"></div> 
+          <div class="check-text">Measuring to ensure updates are a success</div> 
+        </div>
+        <div class="checkContainer content">
+          <div class="custom-check"></div> 
+          <div class="check-text">And much more!</div> 
+        </div>
+          
+        <div class="massageContainer">
+          <div class="emailLabel text-xs font-weight-bold">Email address</div>
+          <div id="resultMessage" class="message text-xs">  </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="emailText" id="emailText" placeholder="email@company.com" class="form-control" />
+            <button class="custom-button" name="emailSubscribe" id="emailSubscribe" type="button"> Subscribe to monthly newsletter </button> 
+        </div>
+  </div>
+    <div class="two">
+        <img src="assets/images/illustration-sign-up-desktop.svg" class="card-img-right" /> 
+    </div>
+  </div>
+  
+  <div class="card" id="success-card">
+    <div class="one">
+      <div class="custom-check bigger"></div> 
+      <p class="headline">
+        Thanks for Subscribing!
+        </p>
+      <div class="subhead content">
+        A confirmation email has been sent to <b id="emailTo"></b>. Please open it and click the button inside to confirmk your subscription
+      </div>
+      <button class="custom-button" name="dismiss" id="dismiss" type="button"> Dismiss message </button> 
+    </div>
+    
+  </div>
+
+</form>
+
+<script type="text/javascript">
+
+  const formCard = document.getElementById('form-card');
+  const successCard = document.getElementById('success-card');
+  let valid = true;
+
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
+  const validate = () => {
+    const $result = $('#resultMessage');
+    const email = $('#emailText').val();
+    $result.text('');
+
+    if(email === ""){
+      $result.text('');
+      $('#emailText').removeClass('is-invalid is-valid');
+      valid = false;
+    } else if(validateEmail(email)){
+      $result.text(email + ' is valid.');
+      $result.css('color', 'green');
+      $('#emailText').addClass(' is-valid').removeClass(' is-invalid');
+      valid = true;
+    } else{
+      $result.text('Valid email required');
+      $result.css('color', 'red');
+      $('#emailText').addClass(' is-invalid').removeClass(' is-valid');
+      valid = false;
+    }
+    return false;
+  }
+
+  $('#emailText').on('input', validate);
+  
+  successCard.style.display = 'none';
+
+  $('#emailSubscribe').click(function(){
+    const email = $('#emailText').val();
+    const $emailTo = $('#emailTo');
+    if(valid){
+      formCard.style.display = 'none';
+      successCard.style.display = 'block';
+      $emailTo.text(email);
+    } else {
+      alert(email + ' is invalid');
+    }
+  });
+
+  $('#dismiss').click(function(){
+    window.location.href="../index.html";
+  });
+  
+</script>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">John Israel Santos</a>.
+  </div>
+</body>
+</html>
